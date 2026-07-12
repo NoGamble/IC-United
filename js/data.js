@@ -80,7 +80,7 @@ const PLAYERS = [
     bio: "球员简介待填写。"
   },
   {
-    id: 4, name: "刘灏铷", nameEn: "Liu Haoru", number: 25, grade: 2022,
+    id: 4, name: "刘颢铷", nameEn: "Liu Haoru", number: 25, grade: 2022,
     position: "LB", height: "—", hometown: "Chongqing",
     favoriteClub: "Bayern Munich", clubId: "BAY",
     goals: 0, assists: 0, appearances: 0,
@@ -198,7 +198,7 @@ const HONORS = [
     rank: "third place", trophy: "3rd",
     description: "IC United在电超的第一年稳扎稳打，最终拿下联赛第三名的好成绩",
     stats: { matches: 7, wins: 3, goals: 11, goalsAgainst: 12 },
-    playerIds: [1, 2, 3, 4, 7, 12, 14],
+    playerIds: [1, 2, 3, 4, 7, 8, 12, 14],
     topScorer: { playerId: 8, goals: 3},
     topAssister: { playerId: 2, assists: 2 },
   },
