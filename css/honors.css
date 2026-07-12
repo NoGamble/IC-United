@@ -1,0 +1,333 @@
+/* ============================================================
+   IC UNITED FC — Honors Page
+   ============================================================ */
+
+.honors-page-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+  align-items: end;
+  gap: clamp(2rem, 7vw, 7rem);
+}
+.honors-header-copy,
+.honors-snapshot {
+  position: relative;
+  z-index: 1;
+}
+.honors-snapshot {
+  padding-left: 1.4rem;
+  border-left: 1px solid rgba(255,255,255,0.12);
+}
+.honors-snapshot-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.1rem;
+}
+.honors-snapshot-year {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 6vw, 5.6rem);
+  line-height: 0.86;
+  letter-spacing: 0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px oklch(78% 0.14 85 / 0.78);
+}
+.honors-snapshot-title {
+  margin-top: 0.9rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--off-white);
+  line-height: 1.45;
+}
+.honors-snapshot-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+.honors-snapshot-meta span {
+  display: block;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+}
+.honors-snapshot-meta strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.86rem;
+  color: var(--off-white);
+}
+
+.honors-layout {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0 4rem;
+  align-items: start;
+  padding-top: 3rem;
+}
+
+/* ---- Sticky year sidebar ---- */
+.honors-years {
+  position: sticky;
+  top: 90px;
+}
+.honors-years-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  margin-bottom: 1.2rem;
+}
+.honors-year-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.45rem 0;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  color: var(--gray-dark);
+  border-left: 2px solid transparent;
+  padding-left: 0.75rem;
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+.honors-year-btn.active,
+.honors-year-btn:hover {
+  color: var(--white);
+  border-color: var(--ice);
+}
+
+/* ---- Honor cards ---- */
+.honors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.honor-card {
+  background: var(--navy-deep);
+  padding: 2.2rem 2.4rem;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 0 2rem;
+  align-items: center;
+  transition: background var(--dur-mid) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+.honor-card::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--ice);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--dur-mid) var(--ease-out);
+}
+.honor-card:hover { background: var(--navy); }
+.honor-card:hover::after,
+.honor-card.expanded::after { transform: scaleY(1); }
+.honor-card.expanded { background: var(--navy-mid); }
+
+.honor-card-trophy {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.honor-card[data-rank="champion"] .honor-card-trophy { color: var(--gold); }
+.honor-card[data-rank="runner-up"] .honor-card-trophy { color: var(--off-white); }
+.honor-card[data-rank="third"] .honor-card-trophy { color: oklch(62% 0.08 45); }
+.honor-card[data-rank="award"] .honor-card-trophy { color: var(--ice); }
+
+.honor-card-main {}
+.honor-card-year {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ice-dim);
+  margin-bottom: 0.3rem;
+}
+.honor-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--white);
+}
+.honor-card-comp {
+  font-size: 0.78rem;
+  color: var(--gray);
+  margin-top: 0.3rem;
+}
+.honor-card-toggle {
+  font-size: 1.2rem;
+  color: var(--gray-dark);
+  transition: transform var(--dur-mid) var(--ease-out), color var(--dur-fast);
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.honor-card:hover .honor-card-toggle { color: var(--white); border-color: rgba(255,255,255,0.18); }
+.honor-card.expanded .honor-card-toggle { transform: rotate(45deg); color: var(--ice); border-color: var(--ice-dim); }
+
+/* ---- Inline detail panel ---- */
+.honor-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--dur-slow) var(--ease-out);
+  background: var(--navy-mid);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.honor-detail.open { max-height: 800px; }
+
+.honor-detail-inner {
+  padding: 2.4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+/* Stats */
+.honor-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  margin-top: 1.2rem;
+}
+.honor-stat {
+  background: var(--navy);
+  padding: 1.2rem 1rem;
+  text-align: center;
+}
+.honor-stat-val {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  line-height: 1;
+}
+.honor-stat-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  margin-top: 0.3rem;
+}
+
+/* Players in this tournament */
+.honor-players-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  margin-bottom: 1rem;
+}
+.honor-player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.honor-player-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--r-sm);
+  background: oklch(22% 0.04 255 / 0.5);
+  border: 1px solid rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: background var(--dur-fast), border-color var(--dur-fast);
+  text-decoration: none;
+  color: inherit;
+}
+.honor-player-row:hover { background: oklch(28% 0.05 255 / 0.6); border-color: rgba(255,255,255,0.1); }
+.honor-player-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: oklch(30% 0.06 255);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--ice-dim);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.honor-player-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.honor-player-info { flex: 1; }
+.honor-player-name { font-size: 0.9rem; font-weight: 500; }
+.honor-player-pos  { font-size: 0.7rem; color: var(--gray); }
+.honor-player-num  { font-family: var(--font-display); font-size: 1.1rem; color: var(--gray-dark); }
+
+/* Top performers */
+.honor-performers {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+.honor-performer {
+  flex: 1;
+  padding: 1rem;
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(255,255,255,0.06);
+  background: oklch(18% 0.04 255 / 0.5);
+}
+.honor-performer-role {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+.honor-performer-name { font-size: 0.9rem; font-weight: 600; }
+.honor-performer-stat { font-family: var(--font-display); font-size: 1.6rem; color: var(--white); margin-top: 0.2rem; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .honors-page-header {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 2.5rem;
+  }
+  .honors-snapshot {
+    padding-left: 0;
+    border-left: 0;
+    max-width: 420px;
+  }
+  .honors-layout { grid-template-columns: 1fr; }
+  .honors-years  { display: none; }
+  .honor-detail-inner { grid-template-columns: 1fr; }
+  .honor-stats-grid   { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .honor-card { grid-template-columns: 60px 1fr auto; gap: 0 1rem; padding: 1.5rem; }
+  .honor-card-trophy { font-size: 2rem; }
+}

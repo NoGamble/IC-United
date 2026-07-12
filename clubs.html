@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clubs — IC United FC</title>
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+  <link rel="stylesheet" href="css/styles.css?v=12">
+  <link rel="stylesheet" href="css/clubs.css?v=12">
+</head>
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/icons/emblem.png" alt="" class="nav-logo-crest">
+      IC UNITED
+    </a>
+    <div class="nav-links">
+      <a href="index.html"   class="nav-link">Home</a>
+      <a href="honors.html"  class="nav-link">Honors</a>
+      <a href="players.html" class="nav-link">Players</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="clubs.html"   class="nav-link">Clubs</a>
+    </div>
+    <button class="nav-burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <header class="page-header clubs-page-header">
+    <div class="clubs-header-copy">
+      <div class="page-header-label">IC United FC</div>
+      <h1>FAN<br><em>WALL</em></h1>
+      <p>Five leagues. One squad. Where do your allegiances lie?</p>
+    </div>
+    <aside class="fanwall-snapshot" aria-label="Fan Wall snapshot">
+      <div class="fanwall-snapshot-label">Fan Wall Index</div>
+      <div class="fanwall-snapshot-total"><span id="fanwallClubTotal">—</span> Clubs</div>
+      <div class="fanwall-snapshot-meta">
+        <div><span>Leagues</span><strong id="fanwallLeagueTotal">—</strong></div>
+        <div><span>Supporters</span><strong id="fanwallSupporterTotal">—</strong></div>
+      </div>
+      <div class="fanwall-league-list" id="fanwallLeagueList"></div>
+    </aside>
+  </header>
+
+  <!-- League tabs -->
+  <div class="section clubs-section">
+    <div class="league-tabs" id="leagueTabs">
+      <!-- filled by JS -->
+    </div>
+    <div class="league-panels" id="leaguePanels">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo"><span>IC</span> UNITED FC</div>
+    <div class="footer-copy">集成电路学院足球队 · Since 2020</div>
+  </footer>
+
+  <script src="js/data.js?v=12"></script>
+  <script src="js/main.js?v=12"></script>
+  <script src="js/clubs.js?v=12"></script>
+</body>
+</html>

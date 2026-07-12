@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Players — IC United FC</title>
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+  <link rel="stylesheet" href="css/styles.css?v=9">
+  <link rel="stylesheet" href="css/players.css?v=9">
+</head>
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/icons/emblem.png" alt="" class="nav-logo-crest">
+      IC UNITED
+    </a>
+    <div class="nav-links">
+      <a href="index.html"   class="nav-link">Home</a>
+      <a href="honors.html"  class="nav-link">Honors</a>
+      <a href="players.html" class="nav-link">Players</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="clubs.html"   class="nav-link">Clubs</a>
+    </div>
+    <button class="nav-burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <header class="page-header players-page-header">
+    <div class="players-header-copy">
+      <div class="page-header-label">IC United FC</div>
+      <h1>THE<br><em>SQUAD</em></h1>
+      <p>All players, by grade. Click any card for full profile.</p>
+    </div>
+    <aside class="squad-snapshot" aria-label="Squad snapshot">
+      <div class="squad-snapshot-label">Squad Snapshot</div>
+      <div class="squad-snapshot-total"><span id="squadTotal">—</span> Players</div>
+      <div class="squad-snapshot-meta">
+        <div>
+          <span>Range</span>
+          <strong id="squadRange">—</strong>
+        </div>
+        <div>
+          <span>Shape</span>
+          <strong id="squadShape">—</strong>
+        </div>
+      </div>
+      <div class="squad-position-bars" id="squadPositionBars"></div>
+    </aside>
+  </header>
+
+  <!-- Grade filter -->
+  <div class="section players-filter-wrap">
+    <div class="players-filter" id="playersFilter" role="tablist">
+      <button class="filter-btn active" data-grade="all" role="tab">All</button>
+      <!-- grades filled by JS -->
+    </div>
+    <div class="players-count" id="playersCount"></div>
+  </div>
+
+  <!-- Grid -->
+  <div class="section players-grid-wrap">
+    <div class="players-grid" id="playersGrid">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <!-- Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="drawer" id="playerDrawer" aria-label="Player profile">
+    <button class="drawer-close" id="drawerClose" aria-label="Close">✕</button>
+    <div class="drawer-body" id="drawerBody">
+      <!-- filled by JS -->
+    </div>
+  </aside>
+
+  <footer class="footer">
+    <div class="footer-logo"><span>IC</span> UNITED FC</div>
+    <div class="footer-copy">集成电路学院足球队 · Since 2020</div>
+  </footer>
+
+  <script src="js/data.js?v=9"></script>
+  <script src="js/main.js?v=9"></script>
+  <script src="js/players.js?v=9"></script>
+</body>
+</html>

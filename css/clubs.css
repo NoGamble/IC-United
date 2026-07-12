@@ -1,0 +1,401 @@
+/* ============================================================
+   IC UNITED FC — Clubs / Fan Wall Page
+   ============================================================ */
+
+.clubs-page-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+  align-items: end;
+  gap: clamp(2rem, 7vw, 7rem);
+}
+.clubs-header-copy,
+.fanwall-snapshot {
+  position: relative;
+  z-index: 1;
+}
+.fanwall-snapshot {
+  padding-left: 1.4rem;
+  border-left: 1px solid rgba(255,255,255,0.12);
+}
+.fanwall-snapshot-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ice);
+  margin-bottom: 1.1rem;
+}
+.fanwall-snapshot-total {
+  font-family: var(--font-display);
+  font-size: clamp(2.7rem, 6vw, 5.4rem);
+  line-height: 0.86;
+  letter-spacing: 0.02em;
+  color: var(--white);
+}
+.fanwall-snapshot-total span {
+  color: transparent;
+  -webkit-text-stroke: 1px oklch(72% 0.12 240 / 0.72);
+}
+.fanwall-snapshot-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+.fanwall-snapshot-meta span,
+.fanwall-league-name {
+  display: block;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+}
+.fanwall-snapshot-meta strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.86rem;
+  color: var(--off-white);
+}
+.fanwall-league-list {
+  display: grid;
+  gap: 0.62rem;
+  margin-top: 1.5rem;
+}
+.fanwall-league-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1rem;
+}
+.fanwall-league-name {
+  color: var(--gray);
+}
+.fanwall-league-count {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--off-white);
+}
+
+.clubs-section { padding-top: 3rem; }
+
+/* ---- League tabs ---- */
+.league-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 3rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.league-tabs::-webkit-scrollbar { display: none; }
+.league-tab {
+  padding: 0.8rem 1.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color var(--dur-fast), border-color var(--dur-fast);
+  flex-shrink: 0;
+}
+.league-tab:hover { color: var(--off-white); }
+.league-tab.active { color: var(--white); border-color: var(--ice); }
+
+/* ---- League panel ---- */
+.league-panel { display: none; }
+.league-panel.active { display: block; }
+
+.league-panel-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  margin-bottom: 2rem;
+}
+
+.clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* ---- Club card (flip) ---- */
+.club-card-wrap {
+  perspective: 1000px;
+  height: 320px;
+}
+.club-card {
+  position: relative;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s var(--ease-out);
+  cursor: pointer;
+}
+.club-card-wrap:hover .club-card { transform: rotateY(180deg); }
+.club-card-front,
+.club-card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-lg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+/* Front */
+.club-card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--navy-mid);
+  position: relative;
+}
+.club-card-front::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  transition: opacity var(--dur-mid);
+}
+.club-card-wrap:hover .club-card-front::before { opacity: 0.14; }
+.club-crest {
+  position: relative;
+  width: 46px;
+  height: 54px;
+  border-radius: 14px 14px 18px 18px;
+  background:
+    linear-gradient(145deg, var(--club-color), var(--club-secondary));
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 14px 28px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+}
+.club-crest.has-logo {
+  background: transparent;
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: none;
+}
+.club-crest::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 10px 10px 14px 14px;
+  pointer-events: none;
+}
+.club-crest.has-logo::after { display: none; }
+.club-crest span {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: white;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+}
+.club-crest.has-logo span { display: none; }
+.club-logo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 3px;
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+.club-logo-img.loaded { opacity: 1; }
+.club-crest--front {
+  width: 112px;
+  height: 112px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: none;
+}
+.club-crest--front::after { display: none; }
+.club-crest--front span {
+  font-size: 1.9rem;
+  color: var(--off-white);
+}
+.club-crest--front .club-logo-img {
+  padding: 0;
+}
+.club-crest--front.has-logo {
+  background: transparent;
+  border-color: transparent;
+}
+.club-crest--small {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 34px;
+  height: 40px;
+  flex-shrink: 0;
+}
+.club-crest--small span { font-size: 0.62rem; }
+.club-card-abbr {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.club-card-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  text-align: center;
+}
+.club-card-league {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.club-card-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--gray);
+  margin-top: 0.5rem;
+}
+.club-card-count strong { color: var(--off-white); font-size: 1rem; font-family: var(--font-display); }
+
+/* Supporter avatars on front (compact row) */
+.club-card-avatars {
+  display: flex;
+  gap: 0;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+}
+.club-card-avatars .mini-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: oklch(22% 0.05 255);
+  border: 2px solid var(--navy-mid);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--ice-dim);
+  margin-left: -10px;
+  overflow: hidden;
+}
+.club-card-avatars .mini-avatar:first-child { margin-left: 0; }
+.club-card-avatars .mini-avatar img,
+.club-supporter-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Back */
+.club-card-back {
+  background: var(--navy-light);
+  transform: rotateY(180deg);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+}
+.club-card-back-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.club-card-back-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.club-card-back-league {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.club-back-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  margin-bottom: 0.8rem;
+}
+.club-supporters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.club-supporter-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--r-sm);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.05);
+  text-decoration: none;
+  color: inherit;
+  transition: background var(--dur-fast);
+}
+.club-supporter-row:hover { background: rgba(255,255,255,0.08); }
+.club-supporter-avatar {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: oklch(25% 0.05 255);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--ice-dim);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.club-supporter-name { font-size: 0.85rem; font-weight: 500; flex: 1; }
+.club-supporter-pos  { font-size: 0.65rem; color: var(--gray); }
+
+.club-card-hint {
+  position: absolute;
+  bottom: 0.8rem; right: 1rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+}
+
+@media (max-width: 768px) {
+  .clubs-page-header {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 2.5rem;
+  }
+  .fanwall-snapshot {
+    padding-left: 0;
+    border-left: 0;
+    max-width: 420px;
+  }
+  .clubs-grid { grid-template-columns: repeat(2, 1fr); }
+  .club-card-wrap { height: 280px; }
+}
+@media (max-width: 480px) {
+  .clubs-grid { grid-template-columns: 1fr; }
+}

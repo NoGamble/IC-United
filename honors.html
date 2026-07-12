@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honors — IC United FC</title>
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+  <link rel="stylesheet" href="css/styles.css?v=9">
+  <link rel="stylesheet" href="css/honors.css?v=9">
+</head>
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/icons/emblem.png" alt="" class="nav-logo-crest">
+      IC UNITED
+    </a>
+    <div class="nav-links">
+      <a href="index.html"   class="nav-link">Home</a>
+      <a href="honors.html"  class="nav-link">Honors</a>
+      <a href="players.html" class="nav-link">Players</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="clubs.html"   class="nav-link">Clubs</a>
+    </div>
+    <button class="nav-burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <header class="page-header honors-page-header">
+    <div class="honors-header-copy">
+      <div class="page-header-label">IC United FC</div>
+      <h1>HONORS<br><em>&amp; TITLES</em></h1>
+      <p>Every trophy, every final, every moment that made history.</p>
+    </div>
+    <aside class="honors-snapshot" aria-label="Honors snapshot">
+      <div class="honors-snapshot-label">Latest Honor</div>
+      <div class="honors-snapshot-year" id="honorsSnapshotYear">—</div>
+      <div class="honors-snapshot-title" id="honorsSnapshotTitle">—</div>
+      <div class="honors-snapshot-meta">
+        <div><span>Titles</span><strong id="honorsSnapshotTotal">—</strong></div>
+        <div><span>Record</span><strong id="honorsSnapshotRecord">—</strong></div>
+      </div>
+    </aside>
+  </header>
+
+  <!-- ======================================================
+       HONORS LAYOUT — sticky timeline + cards
+       ====================================================== -->
+  <div class="honors-layout section">
+    <!-- Year nav (sticky) -->
+    <aside class="honors-years" id="honorsYears">
+      <div class="honors-years-label">Year</div>
+      <!-- filled by JS -->
+    </aside>
+
+    <!-- Cards -->
+    <div class="honors-list" id="honorsList">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <!-- ======================================================
+       DETAIL PANEL (inline expand)
+       ====================================================== -->
+  <div class="honor-detail" id="honorDetail" aria-hidden="true">
+    <div class="honor-detail-inner" id="honorDetailInner">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo"><span>IC</span> UNITED FC</div>
+    <div class="footer-copy">集成电路学院足球队 · Since 2020</div>
+  </footer>
+
+  <script src="js/data.js?v=9"></script>
+  <script src="js/main.js?v=9"></script>
+  <script src="js/honors.js?v=9"></script>
+</body>
+</html>
