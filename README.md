@@ -1,142 +1,123 @@
-# IC United FC
+<h1 align="center">IC United FC</h1>
 
-Static showcase website for IC United FC, the football team of the Integrated Circuit College. The site presents the team identity, honors, players, gallery, and Fan Wall for teammates, classmates, and visitors.
+<p align="center">
+  A modern static website for the <strong>Integrated Circuit College football team</strong>
+</p>
 
-Live site:
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML-Static_Site-E34F26?logo=html5&logoColor=white" alt="Static HTML">
+  <img src="https://img.shields.io/badge/CSS-Responsive_UI-1572B6?logo=css3&logoColor=white" alt="Responsive CSS">
+  <img src="https://img.shields.io/badge/JavaScript-Data_Driven-F7DF1E?logo=javascript&logoColor=111" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Cloudflare-Pages-F38020?logo=cloudflare&logoColor=white" alt="Cloudflare Pages">
+  <img src="https://img.shields.io/badge/Build-None-2E3440" alt="No build step">
+</p>
 
-```txt
-https://icunited.top
-```
+---
 
-## Pages
-
-- `index.html`: Home page with hero section, honors ticker, latest honor, and page navigation.
-- `honors.html`: Honors page with competition results, squads, top scorers, and top assisters.
-- `players.html`: Player roster grouped by grade, with profile drawers and avatar zoom.
-- `gallery.html`: Gallery page with category filters and lightbox viewing.
-- `clubs.html`: Fan Wall showing players' favorite clubs, league groups, supporters, and club crests.
-
-## Project Structure
+IC United FC presents the team identity, honors, squad profiles, match gallery, and Fan Wall in a lightweight HTML/CSS/JavaScript site.
 
 ```txt
-.
-├── index.html
-├── honors.html
-├── players.html
-├── gallery.html
-├── clubs.html
-├── css/
-│   ├── styles.css      # Shared site styles
-│   ├── home.css
-│   ├── honors.css
-│   ├── players.css
-│   ├── gallery.css
-│   └── clubs.css
-├── js/
-│   ├── data.js         # Team, player, honor, gallery, and club data
-│   ├── main.js         # Shared interactions
-│   ├── honors.js
-│   ├── players.js
-│   ├── gallery.js
-│   └── clubs.js
-└── assets/
-    ├── icons/
-    │   ├── emblem.png
-    │   ├── favicon.png
-    │   └── clubs/
-    └── images/
-        ├── players/
-        └── gallery/
+Live: https://icunited.top
+Backup: https://ic-united.uestc520.workers.dev/
 ```
 
-## Local Preview
+## ✦ Highlights
 
-This is a static site with no build step and no npm dependency.
+- Full static site: no framework, no build step, no npm dependency.
+- Five focused pages: Home, Honors, Players, Gallery, and Clubs.
+- Data-driven content through `js/data.js`.
+- Player profile drawers, avatar zoom, gallery lightbox, and Fan Wall club crests.
+- Local image assets for player portraits, gallery moments, college emblem, favicon, and club logos.
+
+## ▸ Quick Start
 
 ```bash
 cd /Users/tonali/Projects/IC-United
 python3 -m http.server 8000
 ```
 
-Then open:
+Open:
 
 ```txt
-http://localhost:8000/index.html
+http://127.0.0.1:8000/index.html
 ```
 
-## Content Editing
+Use `127.0.0.1` for local preview. If you need to test on a phone in the same Wi-Fi network, start with:
 
-Most content is maintained in `js/data.js`:
+```bash
+python3 -m http.server 8000 --bind 0.0.0.0
+```
 
-- `TEAM`: basic team information
-- `PLAYERS`: player profiles and stats
-- `HONORS`: competition results and match data
-- `CLUBS`: Fan Wall club metadata
-- `GALLERY`: gallery item metadata
-- `IMAGE_CONFIG`: image path mapping
+Then visit the computer's LAN IP from the phone.
+
+## ◈ Site Map
+
+| Page | Purpose |
+| --- | --- |
+| `index.html` | Hero, identity, latest honor, navigation cards, and ticker |
+| `honors.html` | Competition results, match stats, squads, scorers, and assisters |
+| `players.html` | Player cards, grade filters, profile drawers, and avatar zoom |
+| `gallery.html` | Match/training photos with filters and lightbox preview |
+| `clubs.html` | Fan Wall grouped by league and favorite club |
+
+## ◇ Project Structure
+
+```txt
+.
+├── index.html / honors.html / players.html / gallery.html / clubs.html
+├── css/
+│   ├── styles.css      # Shared layout, nav, drawer, lightbox, modal
+│   ├── home.css        # Home page
+│   ├── honors.css      # Honors page
+│   ├── players.css     # Players page
+│   ├── gallery.css     # Gallery page
+│   └── clubs.css       # Fan Wall page
+├── js/
+│   ├── data.js         # Team content, player data, honors, clubs, gallery
+│   ├── main.js         # Shared interactions
+│   └── *.js            # Page-specific rendering logic
+└── assets/
+    ├── icons/          # Emblem, favicon, club crests
+    └── images/         # Player portraits and gallery images
+```
+
+## ◆ Content Updates
+
+Most site content lives in `js/data.js`.
+
+| Data Block | What It Controls |
+| --- | --- |
+| `TEAM` | Team name, slogan, years, and metadata |
+| `PLAYERS` | Player profile, number, grade, stats, position, and favorite club |
+| `HONORS` | Trophies, match records, squads, top scorer, and top assister |
+| `CLUBS` | Fan Wall club metadata and colors |
+| `GALLERY` | Gallery items, categories, dates, and image IDs |
+| `IMAGE_CONFIG` | Local image path mapping |
 
 When adding a player:
 
 1. Add the player object to `PLAYERS`.
-2. Put the avatar in `assets/images/players/`.
-3. Add the image path to `IMAGE_CONFIG.players`.
-
-Example:
+2. Place the portrait in `assets/images/players/`.
+3. Register the path in `IMAGE_CONFIG.players`.
 
 ```js
 17: 'assets/images/players/17.jpg'
 ```
 
-## Image Rules
-
-Player avatars:
+## ◎ Asset Rules
 
 ```txt
-assets/images/players/{player-id}.jpg
+Player portraits:     assets/images/players/{player-id}.jpg
+Gallery images:       assets/images/gallery/{gallery-id}.jpg
+Raw club crests:      assets/icons/clubs/{club-id}.png|jpg|jpeg|webp
+Clean club crests:    assets/icons/clubs/clean/{club-id}.png
+College emblem:       assets/icons/emblem.png
+Favicon:              assets/icons/favicon.png
 ```
 
-Gallery images:
+Fan Wall loads transparent crests from `assets/icons/clubs/clean/` first. Keep club logos centered and visually similar in size.
 
-```txt
-assets/images/gallery/{gallery-id}.jpg
-```
-
-Original club crests:
-
-```txt
-assets/icons/clubs/{club-id}.png
-assets/icons/clubs/{club-id}.jpg
-assets/icons/clubs/{club-id}.jpeg
-assets/icons/clubs/{club-id}.webp
-```
-
-Processed transparent club crests:
-
-```txt
-assets/icons/clubs/clean/{club-id}.png
-```
-
-The Fan Wall loads the processed transparent PNG from `clean/` first. Current club crests have been cleaned, cropped, centered, and normalized for consistent visual size.
-
-## Features
-
-- Custom cursor
-- Responsive mobile navigation
-- Scroll reveal animations
-- Player profile drawer
-- Avatar zoom modal
-- Gallery lightbox
-- Fan Wall card flip interaction
-- Header snapshot panels for roster, honors, and clubs
-- Local favicon generated from the college emblem
-
-## Deployment
-
-The site is currently deployed at:
-
-```txt
-https://ic-united.uestc520.workers.dev/
-```
+## △ Deployment
 
 Recommended Cloudflare Pages settings:
 
@@ -147,13 +128,12 @@ Build output directory: /
 Root directory: /
 ```
 
-Because this is a static site, it can also be deployed to GitHub Pages, Netlify, Vercel, or a school-hosted server.
+Because this is a static site, it can also run on GitHub Pages, Netlify, Vercel, a school server, or any basic static hosting service.
 
-For Mainland China visitors, the default `workers.dev` or `pages.dev` domain may be unreliable. For a public launch, consider using a custom domain or a Mainland-friendly mirror hosted through a school server or domestic CDN.
+## ✓ Maintenance Checklist
 
-## Maintenance Notes
-
+- After editing `js/data.js`, check all five pages.
+- After editing `css/styles.css`, check desktop and mobile navigation.
+- After replacing images, hard refresh the browser or bump the relevant `?v=` resource version.
 - Do not commit private student information or unauthorized photos.
-- After editing `css/styles.css`, check all pages.
-- After editing `js/data.js`, check Home, Honors, Players, Gallery, and Fan Wall.
-- If an updated image does not appear, hard refresh the browser or increase the resource version query in the relevant HTML file.
+- Keep `README.md` and `assets/icons/clubs/README.md` updated when asset rules change.
