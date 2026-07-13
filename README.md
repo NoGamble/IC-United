@@ -5,7 +5,7 @@ Static showcase website for IC United FC, the football team of the Integrated Ci
 Live site:
 
 ```txt
-https://ic-united.uestc520.workers.dev/
+https://icunited.top
 ```
 
 ## Pages
